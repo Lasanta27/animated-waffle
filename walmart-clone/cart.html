@@ -244,6 +244,7 @@
 
             <!-- Dancing character -->
             <div id="dancing-character" style="text-align:center; margin-bottom: 2rem;">
+                <i id="dancing-old-man" class="fas fa-male" style="font-size: 6rem; color: var(--primary-terracotta); animation: dance 1s infinite;"></i>
             </div>
             
             <div class="cart-items">
@@ -420,9 +421,15 @@
             });
         });
 
-        // CSS animation for dancing spider
+        // CSS animation for dancing spider (used for dancing hat now)
         const style = document.createElement('style');
         style.innerHTML = `
+            @keyframes dance {
+                0%, 100% { transform: translateY(0) rotate(0deg); }
+                25% { transform: translateY(-10px) rotate(-10deg); }
+                50% { transform: translateY(0) rotate(10deg); }
+                75% { transform: translateY(-10px) rotate(-10deg); }
+            }
         `;
         document.head.appendChild(style);
     </script>
