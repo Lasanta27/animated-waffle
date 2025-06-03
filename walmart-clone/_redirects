@@ -1,0 +1,12 @@
+# Ensure verification file is accessible
+/google8cc75487fa326658.html /google8cc75487fa326658.html 200
+
+# Handle PHP files
+/cart_actions.php /cart.html 200
+/products.php /index.html 200
+
+# Handle category pages
+/categories/* /categories/:splat 200
+
+# SPA fallback - must be last
+/* /index.html 200
