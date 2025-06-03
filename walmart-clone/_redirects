@@ -1,3 +1,6 @@
+# Redirect all HTTP requests to HTTPS
+http://*  https://%{host}%{url}  301!
+
 # Ensure verification file is accessible
 /google8cc75487fa326658.html /google8cc75487fa326658.html 200
 
