@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /products.php
+Allow: /alebrijes
+Allow: /textiles
+Allow: /mezcal
+Allow: /barro-negro
+Allow: /tapetes
+Allow: /huipiles
+
+Disallow: /cart.html
+Disallow: /cart_actions.php
+Disallow: /database/
+Disallow: /js/
+Disallow: /css/
+
+Sitemap: https://www.laguelaguetza.com/sitemap.xml

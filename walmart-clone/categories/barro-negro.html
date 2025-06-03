@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barro Negro de Oaxaca | La Guelaguetza</title>
+    <meta name="description" content="Descubre la tradición del barro negro de San Bartolo Coyotepec. Piezas únicas de cerámica oaxaqueña elaboradas con técnicas ancestrales.">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-terracotta) 0%, var(--secondary-terracotta) 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 250px;
+            background: var(--warm-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-terracotta);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            color: var(--text-brown);
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .product-description {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary-terracotta);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            background: var(--primary-terracotta);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: var(--secondary-terracotta);
+        }
+
+        .artisan-section {
+            background: var(--warm-beige);
+            padding: 4rem 0;
+            margin-top: 3rem;
+        }
+
+        .artisan-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .artisan-info h2 {
+            color: var(--text-brown);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .artisan-info p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .artisan-image {
+            height: 400px;
+            background: var(--primary-terracotta);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .artisan-content {
+                grid-template-columns: 1fr;
+            }
+
+            .artisan-image {
+                height: 300px;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .category-description {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-sun walmart-spark"></i>
+                    <span class="logo-text">La Guelaguetza</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                    <a href="../products.php" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        Productos
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-gift"></i>
+                        Beneficios
+                    </a>
+                </nav>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar barro negro">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="../cart.html" class="cart-btn" style="text-decoration: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Header -->
+    <section class="category-header">
+        <div class="container">
+            <h1 class="category-title">Barro Negro de Oaxaca</h1>
+            <p class="category-description">
+                Descubre la tradición milenaria del barro negro de San Bartolo Coyotepec. Cada pieza es moldeada a mano y bruñida hasta obtener ese característico brillo negro que hace única a esta cerámica oaxaqueña.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <div class="container">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-vase"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Vasija Ceremonial</h3>
+                    <p class="product-description">Vasija de barro negro bruñido con diseños geométricos tradicionales zapotecos.</p>
+                    <div class="product-price">$1,200 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Jarro Tradicional</h3>
+                    <p class="product-description">Jarro de barro negro para chocolate o café, con asa ergonómica y acabado brillante.</p>
+                    <div class="product-price">$450 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-bowl-food"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Molcajete de Barro</h3>
+                    <p class="product-description">Molcajete artesanal de barro negro para preparar salsas y especias.</p>
+                    <div class="product-price">$850 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-shapes"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Figura Decorativa</h3>
+                    <p class="product-description">Figura ornamental de barro negro con motivos prehispánicos.</p>
+                    <div class="product-price">$650 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Artisan Section -->
+    <section class="artisan-section">
+        <div class="artisan-content">
+            <div class="artisan-info">
+                <h2>La Tradición del Barro Negro</h2>
+                <p>El barro negro de San Bartolo Coyotepec es una técnica cerámica única en el mundo. Su característico color y brillo se obtienen mediante un proceso de cocción especial en hornos subterráneos sin oxígeno.</p>
+                <p>Esta tradición fue perfeccionada por Doña Rosa Real de Nieto, quien desarrolló la técnica del bruñido que da el brillo característico a estas piezas. Cada vasija es moldeada a mano sin torno, utilizando únicamente las manos y piedras de río para el bruñido.</p>
+            </div>
+            <div class="artisan-image">
+                <i class="fas fa-fire"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Acerca de La Guelaguetza</h4>
+                    <ul>
+                        <li><a href="#">Quiénes somos</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                        <li><a href="#">Inversionistas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">Compra segura</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Guelaguetza. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alebrijes Oaxaqueños | La Guelaguetza</title>
+    <meta name="description" content="Descubre nuestra colección de alebrijes oaxaqueños, figuras artesanales llenas de color y fantasía. Piezas únicas hechas a mano por artesanos de Oaxaca.">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-terracotta) 0%, var(--secondary-terracotta) 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 250px;
+            background: var(--warm-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-terracotta);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            color: var(--text-brown);
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .product-description {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary-terracotta);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            background: var(--primary-terracotta);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: var(--secondary-terracotta);
+        }
+
+        .artisan-section {
+            background: var(--warm-beige);
+            padding: 4rem 0;
+            margin-top: 3rem;
+        }
+
+        .artisan-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .artisan-info h2 {
+            color: var(--text-brown);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .artisan-info p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .artisan-image {
+            height: 400px;
+            background: var(--primary-terracotta);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .artisan-content {
+                grid-template-columns: 1fr;
+            }
+
+            .artisan-image {
+                height: 300px;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .category-description {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-sun walmart-spark"></i>
+                    <span class="logo-text">La Guelaguetza</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                    <a href="../products.php" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        Productos
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-gift"></i>
+                        Beneficios
+                    </a>
+                </nav>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar alebrijes">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="../cart.html" class="cart-btn" style="text-decoration: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Header -->
+    <section class="category-header">
+        <div class="container">
+            <h1 class="category-title">Alebrijes Oaxaqueños</h1>
+            <p class="category-description">
+                Descubre nuestra colección de alebrijes, criaturas fantásticas talladas en madera y pintadas a mano por artesanos oaxaqueños. Cada pieza es única y cuenta una historia mágica a través de sus vibrantes colores y diseños imaginativos.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <div class="container">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Dragón Multicolor</h3>
+                    <p class="product-description">Alebrije tallado en madera de copal, pintado a mano con colores vibrantes y detalles intrincados.</p>
+                    <div class="product-price">$1,850 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-cat"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Gato Fantástico</h3>
+                    <p class="product-description">Alebrije felino con alas y patrones geométricos, elaborado con técnicas tradicionales.</p>
+                    <div class="product-price">$1,250 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-crow"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Ave del Paraíso</h3>
+                    <p class="product-description">Majestuoso alebrije en forma de ave con plumaje colorido y detalles dorados.</p>
+                    <div class="product-price">$2,150 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Artisan Section -->
+    <section class="artisan-section">
+        <div class="artisan-content">
+            <div class="artisan-info">
+                <h2>El Arte de los Alebrijes</h2>
+                <p>Los alebrijes son una forma de arte popular mexicana que nació en Oaxaca. Cada pieza es tallada a mano en madera de copal por artesanos expertos que han heredado esta tradición de generación en generación.</p>
+                <p>El proceso de creación involucra días de tallado meticuloso, seguido por un detallado trabajo de pintura que puede tomar semanas para completar los intrincados diseños y patrones que caracterizan a estas piezas únicas.</p>
+            </div>
+            <div class="artisan-image">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Acerca de La Guelaguetza</h4>
+                    <ul>
+                        <li><a href="#">Quiénes somos</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                        <li><a href="#">Inversionistas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">Compra segura</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Guelaguetza. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

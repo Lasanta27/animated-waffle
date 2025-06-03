@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mezcal Artesanal | La Guelaguetza</title>
+    <meta name="description" content="Descubre nuestra selección de mezcal artesanal oaxaqueño. Bebidas espirituosas elaboradas con agaves silvestres y técnicas tradicionales.">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-terracotta) 0%, var(--secondary-terracotta) 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 250px;
+            background: var(--warm-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-terracotta);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            color: var(--text-brown);
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .product-description {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary-terracotta);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            background: var(--primary-terracotta);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: var(--secondary-terracotta);
+        }
+
+        .artisan-section {
+            background: var(--warm-beige);
+            padding: 4rem 0;
+            margin-top: 3rem;
+        }
+
+        .artisan-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .artisan-info h2 {
+            color: var(--text-brown);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .artisan-info p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .artisan-image {
+            height: 400px;
+            background: var(--primary-terracotta);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+        }
+
+        .age-verification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .age-verification-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .age-verification h2 {
+            color: var(--text-brown);
+            margin-bottom: 1rem;
+        }
+
+        .age-verification p {
+            margin-bottom: 1.5rem;
+            color: var(--gray-700);
+        }
+
+        .age-verification button {
+            margin: 0.5rem;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+        }
+
+        .age-yes {
+            background: var(--primary-terracotta);
+            color: white;
+        }
+
+        .age-no {
+            background: var(--gray-300);
+            color: var(--gray-700);
+        }
+
+        @media (max-width: 768px) {
+            .artisan-content {
+                grid-template-columns: 1fr;
+            }
+
+            .artisan-image {
+                height: 300px;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .category-description {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Age Verification -->
+    <div class="age-verification" id="ageVerification">
+        <div class="age-verification-content">
+            <h2>Verificación de Edad</h2>
+            <p>¿Eres mayor de 18 años?</p>
+            <button class="age-yes" onclick="verifyAge(true)">Sí, soy mayor de 18</button>
+            <button class="age-no" onclick="verifyAge(false)">No, soy menor</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-sun walmart-spark"></i>
+                    <span class="logo-text">La Guelaguetza</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                    <a href="../products.php" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        Productos
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-gift"></i>
+                        Beneficios
+                    </a>
+                </nav>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar mezcales">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="../cart.html" class="cart-btn" style="text-decoration: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Header -->
+    <section class="category-header">
+        <div class="container">
+            <h1 class="category-title">Mezcal Artesanal Oaxaqueño</h1>
+            <p class="category-description">
+                Descubre la tradición del mezcal oaxaqueño, destilado artesanalmente a partir de agaves silvestres. Cada botella cuenta una historia de sabores únicos y técnicas ancestrales transmitidas por generaciones.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <div class="container">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-wine-bottle"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Mezcal Espadín</h3>
+                    <p class="product-description">Mezcal artesanal elaborado con agave Espadín, notas herbales y ahumadas.</p>
+                    <div class="product-price">$850 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-wine-bottle"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Mezcal Tobalá</h3>
+                    <p class="product-description">Mezcal premium de agave silvestre Tobalá, sabor suave y complejo.</p>
+                    <div class="product-price">$1,500 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-wine-bottle"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Mezcal Tepeztate</h3>
+                    <p class="product-description">Mezcal de agave Tepeztate, notas minerales y cítricas intensas.</p>
+                    <div class="product-price">$2,200 MXN</div>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Artisan Section -->
+    <section class="artisan-section">
+        <div class="artisan-content">
+            <div class="artisan-info">
+                <h2>El Arte del Mezcal</h2>
+                <p>El mezcal es más que una bebida, es una tradición que refleja la riqueza cultural de Oaxaca. Los maestros mezcaleros utilizan técnicas ancestrales para transformar el agave en esta bebida espirituosa única.</p>
+                <p>Cada paso del proceso es artesanal: desde la selección y cocción del agave en hornos de tierra, hasta la molienda, fermentación y destilación en alambiques de cobre.</p>
+            </div>
+            <div class="artisan-image">
+                <i class="fas fa-glass-whiskey"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Acerca de La Guelaguetza</h4>
+                    <ul>
+                        <li><a href="#">Quiénes somos</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                        <li><a href="#">Inversionistas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">Compra segura</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Guelaguetza. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Verificación de edad
+        function verifyAge(isAdult) {
+            if (isAdult) {
+                document.getElementById('ageVerification').style.display = 'none';
+                localStorage.setItem('ageVerified', 'true');
+            } else {
+                window.location.href = '../index.html';
+            }
+        }
+
+        // Verificar si ya se ha confirmado la edad
+        window.onload = function() {
+            if (localStorage.getItem('ageVerified') === 'true') {
+                document.getElementById('ageVerification').style.display = 'none';
+            }
+        }
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

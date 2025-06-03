@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - La Guelaguetza</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .cart-page {
+            padding: 4rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .cart-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cart-items {
+            background: var(--white);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--warm-beige);
+            gap: 2rem;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-image {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--warm-gray) 0%, var(--warm-beige) 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary-terracotta);
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            color: var(--text-brown);
+            margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .item-price {
+            color: var(--primary-terracotta);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: 2px solid var(--primary-terracotta);
+            color: var(--primary-terracotta);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-terracotta);
+            color: var(--white);
+        }
+
+        .quantity-number {
+            font-size: 1.1rem;
+            color: var(--text-brown);
+        }
+
+        .item-remove {
+            color: var(--accent-red);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .item-remove:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-summary {
+            background: var(--white);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.1);
+        }
+
+        .summary-title {
+            color: var(--text-brown);
+            font-family: 'Georgia', serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: var(--text-brown);
+        }
+
+        .summary-total {
+            border-top: 2px solid var(--warm-beige);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, var(--primary-terracotta) 0%, var(--secondary-terracotta) 100%);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            width: 100%;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(210, 105, 30, 0.4);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-brown);
+        }
+
+        .empty-cart i {
+            font-size: 4rem;
+            color: var(--warm-beige);
+            margin-bottom: 1rem;
+        }
+
+        .continue-shopping {
+            color: var(--primary-terracotta);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            font-family: 'Georgia', serif;
+            transition: color 0.3s ease;
+        }
+
+        .continue-shopping:hover {
+            color: var(--secondary-terracotta);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-sun walmart-spark"></i>
+                    <span class="logo-text">La Guelaguetza</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        Departamentos
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-gift"></i>
+                        Beneficios
+                    </a>
+                </nav>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar productos oaxaqueños">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <button class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Content -->
+    <main class="cart-page">
+        <div class="container">
+            <h1 class="cart-title">Tu Carrito</h1>
+
+            <!-- Dancing character -->
+            <div id="dancing-character" style="text-align:center; margin-bottom: 2rem;">
+                <img src="images/dancing-muñequite.gif" alt="Dancing Muñequite" style="width: 150px; height: auto; animation-play-state: paused;">
+            </div>
+            
+            <div class="cart-items">
+                <div class="cart-item">
+                    <div class="item-image">
+                        <i class="fas fa-mask"></i>
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Alebrije Decorativo</h3>
+                        <div class="item-price">$850.00 MXN</div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn">-</button>
+                            <span class="quantity-number">1</span>
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    <button class="item-remove">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+
+                <div class="cart-item">
+                    <div class="item-image">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Huipil Bordado</h3>
+                        <div class="item-price">$1,200.00 MXN</div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn">-</button>
+                            <span class="quantity-number">1</span>
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    <button class="item-remove">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <h2 class="summary-title">Resumen de Compra</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>$2,050.00 MXN</span>
+                </div>
+                <div class="summary-row">
+                    <span>Envío</span>
+                    <span>Gratis</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span>$2,050.00 MXN</span>
+                </div>
+                <button class="checkout-btn">Proceder al Pago</button>
+            </div>
+
+            <!-- Empty Cart State (hidden by default) -->
+            <div class="empty-cart" style="display: none;">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Tu carrito está vacío</h2>
+                <p>¡Descubre nuestros productos artesanales!</p>
+                <a href="index.html" class="continue-shopping">Continuar Comprando</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Acerca de La Guelaguetza</h4>
+                    <ul>
+                        <li><a href="#">Quiénes somos</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                        <li><a href="#">Inversionistas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">Compra segura</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 La Guelaguetza. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quantityBtns = document.querySelectorAll('.quantity-btn');
+            const removeBtns = document.querySelectorAll('.item-remove');
+            const cartItems = document.querySelector('.cart-items');
+            const emptyCart = document.querySelector('.empty-cart');
+            const cartSummary = document.querySelector('.cart-summary');
+
+            // Handle quantity buttons
+            quantityBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const quantityEl = this.parentElement.querySelector('.quantity-number');
+                    let quantity = parseInt(quantityEl.textContent);
+                    
+                    if (this.textContent === '+') {
+                        quantity++;
+                    } else if (quantity > 1) {
+                        quantity--;
+                    }
+                    
+                    quantityEl.textContent = quantity;
+                    updateTotal();
+                });
+            });
+
+            // Handle remove buttons
+            removeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.closest('.cart-item');
+                    item.remove();
+                    
+                    // Check if cart is empty
+                    if (!cartItems.querySelector('.cart-item')) {
+                        cartItems.style.display = 'none';
+                        cartSummary.style.display = 'none';
+                        emptyCart.style.display = 'block';
+                    }
+                    
+                    updateTotal();
+                });
+            });
+
+            // Update total
+            function updateTotal() {
+                const items = document.querySelectorAll('.cart-item');
+                let total = 0;
+
+                items.forEach(item => {
+                    const price = parseFloat(item.querySelector('.item-price').textContent.replace('$', '').replace(',', '').replace(' MXN', ''));
+                    const quantity = parseInt(item.querySelector('.quantity-number').textContent);
+                    total += price * quantity;
+                });
+
+                document.querySelector('.summary-total span:last-child').textContent = `$${total.toFixed(2)} MXN`;
+                document.querySelector('.summary-row:first-child span:last-child').textContent = `$${total.toFixed(2)} MXN`;
+            }
+
+            // Checkout button
+            document.querySelector('.checkout-btn').addEventListener('click', function() {
+                alert('¡Gracias por tu compra! Procesando el pago...');
+            });
+        });
+    </script>
+</body>
+</html>
