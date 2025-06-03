@@ -244,7 +244,6 @@
 
             <!-- Dancing character -->
             <div id="dancing-character" style="text-align:center; margin-bottom: 2rem;">
-                <img src="images/dancing-muñequite.gif" alt="Dancing Muñequite" style="width: 150px; height: auto; animation-play-state: paused;">
             </div>
             
             <div class="cart-items">
@@ -355,6 +354,7 @@
             const cartItems = document.querySelector('.cart-items');
             const emptyCart = document.querySelector('.empty-cart');
             const cartSummary = document.querySelector('.cart-summary');
+            const dancingSpider = document.getElementById('dancing-spider');
 
             // Handle quantity buttons
             quantityBtns.forEach(btn => {
@@ -370,6 +370,7 @@
                     
                     quantityEl.textContent = quantity;
                     updateTotal();
+                    updateSpiderDance();
                 });
             });
 
@@ -387,6 +388,7 @@
                     }
                     
                     updateTotal();
+                    updateSpiderDance();
                 });
             });
 
@@ -405,11 +407,24 @@
                 document.querySelector('.summary-row:first-child span:last-child').textContent = `$${total.toFixed(2)} MXN`;
             }
 
+            // Update spider dance animation based on total quantity
+            function updateSpiderDance() {
+            }
+
+            // Initialize spider dance state
+            updateSpiderDance();
+
             // Checkout button
             document.querySelector('.checkout-btn').addEventListener('click', function() {
                 alert('¡Gracias por tu compra! Procesando el pago...');
             });
         });
+
+        // CSS animation for dancing spider
+        const style = document.createElement('style');
+        style.innerHTML = `
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
