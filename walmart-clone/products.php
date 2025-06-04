@@ -11,8 +11,6 @@ $categories = getCategories();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos - La Guelaguetza</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .products-page {
@@ -333,5 +331,6 @@ $categories = getCategories();
             });
         });
     </script>
+    <script src="js/style.js"></script>
 </body>
 </html>
